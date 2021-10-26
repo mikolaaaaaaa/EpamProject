@@ -1,0 +1,51 @@
+	<Printing>
+		<journal>
+			<name>Spectator</name>
+			<cntPages>10</cntPages>
+			<yearOfPublished>1999</yearOfPublished>
+			<publisher>LondonPrint</publisher>
+			<genre>science</genre>
+		</journal>
+		<journal>
+			<name>Time</name>
+			<cntPages>15</cntPages>
+			<yearOfPublished>2005</yearOfPublished>
+			<publisher>USAPrint</publisher>
+			<genre>art</genre>
+		</journal>
+		<book>
+			<name>Harry Potter</name>
+			<cntPages>600</cntPages>
+			<yearOfPublished>2005</yearOfPublished>
+			<publisher>USAPrint</publisher>
+			<genre>fiction</genre>
+		</book>
+		<book>
+			<name>The Hound of the Baskervilles</name>
+			<cntPages>200</cntPages>
+			<yearOfPublished>2000</yearOfPublished>
+			<publisher>LondonPrint</publisher>
+			<genre>fiction</genre>
+		</book>
+		<newspaper>
+			<name>The New York Times</name>
+			<cntPages>10</cntPages>
+			<yearOfPublished>2010</yearOfPublished>
+			<publisher>USAPrint</publisher>
+			<genre>fiction</genre>
+		</newspaper>
+		<newspaper>
+			<name>The Washington Post</name>
+			<cntPages>15</cntPages>
+			<yearOfPublished>2020</yearOfPublished>
+			<publisher>USAPrint</publisher>
+			<genre>fiction</genre>
+		</newspaper>
+		<Result>
+			<NumberOfPages>850</NumberOfPages>
+			<NumberOfScience>1</NumberOfScience>
+			<NumberOfArt>1</NumberOfArt>
+			<NumberOfFiction>4</NumberOfFiction>
+		</Result>
+	</Printing>
+
