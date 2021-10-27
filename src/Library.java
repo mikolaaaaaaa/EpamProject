@@ -1,77 +1,51 @@
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Library {
-    private ArrayList<Printing> science = new ArrayList<Printing>();
-    private ArrayList<Printing> art = new ArrayList<Printing>();
-    private ArrayList<Printing> fiction = new ArrayList<Printing>();
+
+    private SortedMap<String,ArrayList<Printing>> literatureMap = new TreeMap<>(new Comparator<String>() {
+        @Override
+        public int compare(String o1, String o2) {
+            return o1.hashCode() - o2.hashCode();
+        }
+    });
     private int cntOfPages;
 
     public void add(Printing printing) {
-        switch (printing.getGenre()) {
-            case "science" -> {
-                science.add(printing);
-            }
-            case "art" -> {
-                art.add(printing);
-            }
-            case "fiction" -> {
-                fiction.add(printing);
-            }
+
+        if (literatureMap.containsKey(printing.getGenre())) {
+            literatureMap.get(printing.getGenre()).add(printing);
+        }
+        else {
+            ArrayList<Printing> temp = new ArrayList<Printing>();
+            temp.add(printing);
+            literatureMap.put(printing.getGenre(),temp);
         }
         cntOfPages += printing.getCntPages();
     }
 
     public void printXML(PrintWriter writer) {
         writer.printf("\t<%s>\n", "Printing");
-        for (Printing printing : science) {
+        for (Printing printing : literatureMap.get("science")) {
             printing.printXML(writer);
         }
-        for (Printing printing : art) {
+        for (Printing printing : literatureMap.get("art")) {
             printing.printXML(writer);
         }
-        for (Printing printing : fiction) {
+        for (Printing printing : literatureMap.get("fiction")) {
             printing.printXML(writer);
         }
         writer.printf("\t\t<Result>\n");
         writer.printf("\t\t\t<NumberOfPages>%d</NumberOfPages>\n", cntOfPages);
-        writer.printf("\t\t\t<NumberOfScience>%d</NumberOfScience>\n", science.size());
-        writer.printf("\t\t\t<NumberOfArt>%d</NumberOfArt>\n", art.size());
-        writer.printf("\t\t\t<NumberOfFiction>%d</NumberOfFiction>\n", fiction.size());
+        writer.printf("\t\t\t<NumberOfScience>%d</NumberOfScience>\n", literatureMap.get("science").size());
+        writer.printf("\t\t\t<NumberOfArt>%d</NumberOfArt>\n", literatureMap.get("art").size());
+        writer.printf("\t\t\t<NumberOfFiction>%d</NumberOfFiction>\n", literatureMap.get("fiction").size());
         writer.printf("\t\t</Result>\n");
         writer.printf("\t</%s>\n\n", "Printing");
     }
 
-    public void printLibrary() {
-        System.out.println("Всего страниц " + cntOfPages);
-        System.out.println("наука :");
-        for (Printing i : science) {
-            i.print();
-        }
-        System.out.println("искусство :");
-        for (Printing i : art) {
-            i.print();
-        }
-        System.out.println("художественная литература :");
-        for (Printing i : fiction) {
-            i.print();
-        }
-    }
-
     public int getCntOfPages() {
         return cntOfPages;
-    }
-
-    public int getCntOfScience() {
-        return science.size();
-    }
-
-    public int getCntOfArt() {
-        return art.size();
-    }
-
-    public int getCntOfFiction() {
-        return fiction.size();
     }
 
 }

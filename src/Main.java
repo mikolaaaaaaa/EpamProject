@@ -6,26 +6,21 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 
 public class Main {
 
     public static void main(String args[]) throws ParserConfigurationException, IOException, SAXException {
 
-        File file = setFile("C:\\Users\\Mikola\\IdeaProjects\\EpamProject\\src\\Printing.xml");
+        File file = new File("C:\\Users\\Mikola\\IdeaProjects\\EpamProject\\src\\Printing.xml");
         Document doc = setFactory(file);
         Library library = parser(doc);
 
 
-        File out = setFile("C:\\Users\\Mikola\\IdeaProjects\\EpamProject\\src\\Result.xml");
+        File out = new File("C:\\Users\\Mikola\\IdeaProjects\\EpamProject\\src\\Result.xml");
         try (PrintWriter writer = new PrintWriter(out)) {
             library.printXML(writer);
         }
 
-    }
-
-    public static File setFile(String PATH) {
-        return new File(PATH);
     }
 
     private static Document setFactory(File file) throws ParserConfigurationException, IOException, SAXException {

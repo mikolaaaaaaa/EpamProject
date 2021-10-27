@@ -8,7 +8,6 @@ public class Printing {
     private String genre;
     private String type;
 
-
     Printing(){}
 
     public Printing(int cntPages, int yearOfPublishing, String publisher, String genre, String type) {
@@ -18,21 +17,13 @@ public class Printing {
         this.genre = genre;
     }
 
-    public void print() {
-        System.out.println(type);
-        System.out.println(name);
-        System.out.println(cntPages + " страниц");
-        System.out.println(yearOfPublished + " год публикации");
-        System.out.println(publisher + " издатель");
-    }
-
     public void printXML(PrintWriter writer) {
         writer.printf("\t\t<%s>\n", this.type);
-        writer.printf("\t\t\t<%s>%s</%s>\n", "name", this.name,"name");
-        writer.printf("\t\t\t<%s>%s</%s>\n", "cntPages", this.cntPages,"cntPages");
-        writer.printf("\t\t\t<%s>%s</%s>\n", "yearOfPublished", this.yearOfPublished,"yearOfPublished");
-        writer.printf("\t\t\t<%s>%s</%s>\n", "publisher", this.publisher,"publisher");
-        writer.printf("\t\t\t<%s>%s</%s>\n", "genre", this.genre,"genre");
+        writer.printf("\t\t\t<name>%s</name>\n",  this.name);
+        writer.printf("\t\t\t<cntPages>%s</cntPages>\n",  this.cntPages);
+        writer.printf("\t\t\t<yearOfPublished>%s</yearOfPublished>\n", this.yearOfPublished);
+        writer.printf("\t\t\t<publisher>%s</publisher>\n",this.publisher);
+        writer.printf("\t\t\t<genre>%s</genre>\n", this.genre);
         writer.printf("\t\t</%s>\n",this.type);
     }
 
