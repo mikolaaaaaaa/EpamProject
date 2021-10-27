@@ -3,12 +3,7 @@ import java.util.*;
 
 public class Library {
 
-    private SortedMap<String,ArrayList<Printing>> literatureMap = new TreeMap<>(new Comparator<String>() {
-        @Override
-        public int compare(String o1, String o2) {
-            return o1.hashCode() - o2.hashCode();
-        }
-    });
+    private SortedMap<String,ArrayList<Printing>> literatureMap = new TreeMap<>(String::compareTo);
     private int cntOfPages;
 
     public void add(Printing printing) {
@@ -43,6 +38,7 @@ public class Library {
         writer.printf("\t\t</Result>\n");
         writer.printf("\t</%s>\n\n", "Printing");
     }
+
 
     public int getCntOfPages() {
         return cntOfPages;
