@@ -1,7 +1,7 @@
 import java.io.PrintWriter;
 
 public class Printing {
-    String name;
+    private String name;
     private int cntPages;
     private int yearOfPublished;
     private String publisher;
